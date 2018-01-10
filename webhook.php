@@ -47,7 +47,6 @@ For support or questions, go poke my daddy @DatDraggy.
 elseif ($command == '/help') {
   sendMessage($chatId, '
 Here is a small overview of available commands. Alternatively, you can use famonitor.com for email notifications.
-At some point in future, you\'ll be able to use this bot to sign up via email as well.
 
 You can click the following commands to find out more about their usage.
 
