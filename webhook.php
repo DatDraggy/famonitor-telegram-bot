@@ -1,7 +1,7 @@
 <?php
 
 function sendMessage($chatId, $text) {
-  $url = 'https://api.telegram.org/bot{}/';
+  $url = 'https://api.telegram.org/bot547541749:AAH7xydiov_Fgt0crsHcFNJ0GiOhydoI1Qg/';
   $response = file_get_contents($url . 'sendMessage?parse_mode=html&chat_id=' . $chatId . '&text=' . urlencode($text));
   if (empty($response)) {
     //Blocked by user probably. Remove from DB later
@@ -81,7 +81,7 @@ Usage: <code>/add</code> <b>user1</b> <i>user2</i>
     foreach ($messageArr as $parameter) {
       if (strpos($parameter, '/') === false && $count < 4) {
         $count += 1;
-        //$output = shell_exec('php add.php ' . $parameter . ' ' . $username . ' ' . $chatId);
+        $output = shell_exec('php add.php ' . $parameter . ' ' . $username . ' ' . $chatId);
         $added = $added . ' ' . $parameter;
       }
     }
@@ -107,7 +107,7 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
     foreach ($messageArr as $parameter) {
       if (strpos($parameter, '/') === false && $count < 4) {
         $count += 1;
-        //$output = shell_exec('php remove.php ' . $parameter . ' ' . $chatId);
+        $output = shell_exec('php remove.php ' . $parameter . ' ' . $chatId);
         $removed = $removed . ' ' . $parameter;
       }
     }
@@ -118,7 +118,7 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
 elseif ($command == '/list') {
   //List
 
-  //$output = shell_exec('php list.php ' . $chatId);
-  sendMessage($chatId, 'Monitoring: ' . $output);
+  $output = shell_exec('php list.php ' . $chatId);
+  sendMessage($chatId, $output);
   die();
 }
