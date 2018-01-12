@@ -41,6 +41,7 @@ for ($i = 3; $i <= $argv; $i++) {
             die("sql");
           }
         }
+        continue;
       }
     }
     if ($profileExists) {
