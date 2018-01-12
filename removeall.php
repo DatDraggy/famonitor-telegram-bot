@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . "../funcs.php");
+require_once(__DIR__ . "/../funcs.php");
 
 $conn = new mysqli($config['server'], $config['user'], $config['password'], $config['database']);
 
