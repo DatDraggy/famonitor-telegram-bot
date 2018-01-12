@@ -24,10 +24,11 @@ if (substr($message, '0', '1') == '/') {
   array_splice($profilesArr, 0, '1');
 }
 
-if ($command == '/start') {
-  //Start
+switch($command){
+  case "/start":
+    //Start
 
-  sendMessage($chatId, '
+    sendMessage($chatId, '
 Hey there, ' . $username . '.
 
 Use /help to get a list of the available commands.
@@ -37,13 +38,12 @@ Once a new journal has been posted, you will receive a message from the bot.
 
 For support or questions, go poke my daddy @DatDraggy.
 ');
-  die();
-}
+    die();
+    break;
+  case "/help":
+    //Help
 
-elseif ($command == '/help') {
-  //Help
-
-  sendMessage($chatId, '
+    sendMessage($chatId, '
 Here is a small overview of available commands. Alternatively, you can use famonitor.com for email notifications.
 
 You can click add and remove to find out more about their usage.
@@ -61,76 +61,73 @@ You can click add and remove to find out more about their usage.
 <b>Text</b> - Required parameter
 <i>Text</i> - Optional parameter
 ');
-  die();
-}
+    die();
+    break;
+  case "/add":
+    //Add to mon
 
-elseif ($command == '/add') {
-  //Add to mon
-
-  if (empty($profilesArr[0])) {
-    sendMessage($chatId, '
+    if (empty($profilesArr[0])) {
+      sendMessage($chatId, '
 Adds a user to your monitor list. You can also specify multiple users seperated by spaces. (Max 4 users)
 
 Usage: <code>/add</code> <b>user1</b> <i>user2</i>
 
 /add Kieran
 ');
-    die();
-  }
-  else {
-    $count = 0;
-    $added = 'Added to monitor list:';
-    $profiles = '';
-    foreach ($profilesArr as $profile) {
-      $profiles .= ' ' . $profile;
+      die();
     }
-    //$output = 'php add.php ' . $chatId . ' ' . $username . $profiles;
-    $output = shell_exec('php add.php ' . $chatId . ' ' . $username . $profiles);
+    else {
+      $count = 0;
+      $added = 'Added to monitor list:';
+      $profiles = '';
+      foreach ($profilesArr as $profile) {
+        $profiles .= ' ' . $profile;
+      }
+      //$output = 'php add.php ' . $chatId . ' ' . $username . $profiles;
+      $output = shell_exec('php add.php ' . $chatId . ' ' . $username . $profiles);
 
-    sendMessage($chatId, $output);
-  }
-}
+      sendMessage($chatId, $output);
+    }
+    break;
+  case "/remove":
+    //Remove from mon
 
-elseif ($command == '/remove') {
-  //Remove from mon
-
-  if (empty($profilesArr[0])) {
-    sendMessage($chatId, '
+    if (empty($profilesArr[0])) {
+      sendMessage($chatId, '
 Removes a user from your monitor list. You can also specify up to 4 users to remove from your list.
 
 Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
 
 /remove Kieran
 ');
-    die();
-  }
-  else {
-    $count = 0;
-    $removed = 'Removed from monitor list:';
-    foreach ($profilesArr as $parameter) {
-      if (strpos($parameter, '/') === false && $count < 4) {
-        $count += 1;
-        $output = shell_exec('php remove.php ' . $parameter . ' ' . $chatId);
-        $removed = $removed . ' ' . $parameter;
-        sleep(1);
-      }
+      die();
     }
-    sendMessage($chatId, $removed);
-  }
-}
+    else {
+      $count = 0;
+      $removed = 'Removed from monitor list:';
+      foreach ($profilesArr as $parameter) {
+        if (strpos($parameter, '/') === false && $count < 4) {
+          $count += 1;
+          $output = shell_exec('php remove.php ' . $parameter . ' ' . $chatId);
+          $removed = $removed . ' ' . $parameter;
+          sleep(1);
+        }
+      }
+      sendMessage($chatId, $removed);
+    }
+    break;
+  case "/removeall":
+    //Removeall
 
-elseif ($command == '/removeall') {
-  //Removeall
+    $output = shell_exec('php removeall.php ' . $chatId);
+    sendMessage($chatId, $output);
+    die();
+    break;
+  case "/list":
+    //List
 
-  $output = shell_exec('php removeall.php ' . $chatId);
-  sendMessage($chatId, $output);
-  die();
-}
-
-elseif ($command == '/list') {
-  //List
-
-  $output = shell_exec('php list.php ' . $chatId);
-  sendMessage($chatId, $output);
-  die();
+    $output = shell_exec('php list.php ' . $chatId);
+    sendMessage($chatId, $output);
+    die();
+    break;
 }
