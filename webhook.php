@@ -121,8 +121,8 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
 
 elseif ($command == '/removeall') {
   //Removeall
-  $output = 'php removeall.php ' . $chatId;
-  //$output = shell_exec('php removeall.php ' . $chatId);
+
+  $output = shell_exec('php removeall.php ' . $chatId);
   sendMessage($chatId, $output);
   die();
 }
