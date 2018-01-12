@@ -84,8 +84,8 @@ Usage: <code>/add</code> <b>user1</b> <i>user2</i>
     foreach ($profilesArr as $profile) {
       $profiles .= ' ' . $profile;
     }
-    $output = 'php add.php ' . $chatId . ' ' . $username . $profiles;
-    #$output = shell_exec('php add.php ' . $chatId . ' ' . $username . $profiles);
+    //$output = 'php add.php ' . $chatId . ' ' . $username . $profiles;
+    $output = shell_exec('php add.php ' . $chatId . ' ' . $username . $profiles);
 
     sendMessage($chatId, $output);
   }
