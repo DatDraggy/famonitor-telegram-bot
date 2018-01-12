@@ -24,7 +24,7 @@ if (substr($message, '0', '1') == '/') {
   array_splice($profilesArr, 0, '1');
 }
 
-switch($command){
+switch ($command) {
   case "/start":
     //Start
 

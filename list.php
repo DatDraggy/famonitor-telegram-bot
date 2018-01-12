@@ -25,7 +25,7 @@ while ($row = $result->fetch_array()) {
   $rows[] = $row;
 }
 
-if(empty($rows)){
+if (empty($rows)) {
   die('You are not monitoring any accounts.');
 }
 
