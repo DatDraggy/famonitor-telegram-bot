@@ -1,6 +1,7 @@
 <?php
 
 function sendMessage($chatId, $text) {
+  //Yes, my API key is here on purpose. I will revoke it later on when the bot is finished since nobody is using it atm.
   $url = 'https://api.telegram.org/bot547541749:AAH7xydiov_Fgt0crsHcFNJ0GiOhydoI1Qg/';
   $response = file_get_contents($url . 'sendMessage?parse_mode=html&chat_id=' . $chatId . '&text=' . urlencode($text));
   if (empty($response)) {
