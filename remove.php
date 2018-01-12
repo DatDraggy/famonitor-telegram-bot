@@ -22,6 +22,6 @@ for ($i = 2; $i <= $argv; $i++) {
     $removed .= ' <b>' . $profileName . '</b>';
   }
   else{
-    echo "Removed following users from your monitor list:" . $removed;
+    die("Removed following users from your monitor list:" . $removed);
   }
 }
