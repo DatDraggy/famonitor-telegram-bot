@@ -31,7 +31,6 @@ if (empty($rows)) {
 
 foreach ($rows as $row) {
   $monlist .= ' 
-
 - <a href="https://furaffinity.net/user/' . $row['profile'] . '">' . $row['profile'] . '</a>';
 }
 

@@ -41,6 +41,8 @@ for ($i = 3; $i <= $argv; $i++) {
             die("sql");
           }
         }
+        $added .= ' 
+- ' . $profileName;
         continue;
       }
     }
@@ -73,7 +75,8 @@ for ($i = 3; $i <= $argv; $i++) {
       }
     }
 
-    $added .= ' <b>' . $profileName . '</b>';
+    $added .= ' 
+- ' . $profileName;
   }
   else {
     die("Added the following users to your monitor list:" . $added);
