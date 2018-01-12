@@ -41,6 +41,8 @@ for ($i = 3; $i <= $argv; $i++) {
             die("sql");
           }
         }
+        $added .= ' 
+- ' . $profileName;
         continue;
       }
     }
