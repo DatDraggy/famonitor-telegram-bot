@@ -77,15 +77,11 @@ Usage: <code>/add</code> <b>user1</b> <i>user2</i>
       die();
     }
     else {
-      $count = 0;
-      $added = 'Added to monitor list:';
       $profiles = '';
       foreach ($profilesArr as $profile) {
         $profiles .= ' ' . $profile;
       }
-      //$output = 'php add.php ' . $chatId . ' ' . $username . $profiles;
       $output = shell_exec('php add.php ' . $chatId . ' ' . $username . $profiles);
-
       sendMessage($chatId, $output);
     }
     break;
@@ -102,18 +98,14 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
 ');
       die();
     }
+
     else {
-      $count = 0;
-      $removed = 'Removed from monitor list:';
-      foreach ($profilesArr as $parameter) {
-        if (strpos($parameter, '/') === false && $count < 4) {
-          $count += 1;
-          $output = shell_exec('php remove.php ' . $parameter . ' ' . $chatId);
-          $removed = $removed . ' ' . $parameter;
-          sleep(1);
-        }
+      $profiles = '';
+      foreach ($profilesArr as $profile) {
+        $profiles .= ' ' . $profile;
       }
-      sendMessage($chatId, $removed);
+      $output = shell_exec('php remove.php ' . $chatId . ' ' . $profiles);
+      sendMessage($chatId, $output);
     }
     break;
   case "/removeall":
