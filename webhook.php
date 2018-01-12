@@ -145,3 +145,5 @@ elseif ($command == '/list') {
   sendMessage($chatId, $output);
   die();
 }
+
+//Test
