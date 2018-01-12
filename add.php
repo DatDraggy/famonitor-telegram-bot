@@ -73,7 +73,7 @@ for ($i = 3; $i <= $argv; $i++) {
       }
     }
 
-    $added .= ' ' . $profileName;
+    $added .= ' <b>' . $profileName . '</b>';
   }
   else {
     die("Added the following users to your monitor list:" . $added);
