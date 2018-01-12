@@ -1,13 +1,5 @@
 <?php
-
-function sendMessage($chatId, $text) {
-  //Yes, my API key is here on purpose. I will revoke it later on when the bot is finished since nobody is using it atm.
-  $url = 'https://api.telegram.org/bot547541749:AAH7xydiov_Fgt0crsHcFNJ0GiOhydoI1Qg/';
-  $response = file_get_contents($url . 'sendMessage?parse_mode=html&chat_id=' . $chatId . '&text=' . urlencode($text));
-  if (empty($response)) {
-    //Blocked by user probably. Remove from DB later
-  }
-}
+require_once(__DIR__ . "../funcs.php");
 
 $response = file_get_contents('php://input');
 $data = json_decode($response, true);
@@ -19,16 +11,17 @@ $firstName = $data['message']['chat']['first_name'];
 $message = $data['message']['text'];
 
 if (substr($message, '0', '1') == '/') {
-  $messageArr = array();
+  $profilesArr = array();
   if (strpos($message, ' ') !== false) {
-    $messageArr = explode(' ', $message);
+    $profilesArr = explode(' ', $message);
   }
   else {
-    $messageArr[0] = $message;
-    $messageArr[1] = '';
+    $profilesArr[0] = $message;
+    $profilesArr[1] = '';
   }
 
-  $command = $messageArr[0];
+  $command = $profilesArr[0];
+  array_splice($profilesArr, 0, '1');
 }
 
 if ($command == '/start') {
@@ -74,7 +67,7 @@ You can click add and remove to find out more about their usage.
 elseif ($command == '/add') {
   //Add to mon
 
-  if (empty($messageArr[1])) {
+  if (empty($profilesArr[0])) {
     sendMessage($chatId, '
 Adds a user to your monitor list. You can also specify multiple users seperated by spaces. (Max 4 users)
 
@@ -87,23 +80,21 @@ Usage: <code>/add</code> <b>user1</b> <i>user2</i>
   else {
     $count = 0;
     $added = 'Added to monitor list:';
-    foreach ($messageArr as $parameter) {
-      if (strpos($parameter, '/') === false && $count < 4) {
-        $count += 1;
-        $output = shell_exec('php add.php ' . $parameter . ' ' . $username . ' ' . $chatId);
-        $added = $added . ' ' . $parameter;
-        sleep(1);
-        //Cuz we don't wanna screw sometin up eh? uwu
-      }
+    $profiles = '';
+    foreach ($profilesArr as $profile) {
+      $profiles .= ' ' . $profile;
     }
-    sendMessage($chatId, $added);
+    $count += 1;
+    $output = shell_exec('php add.php ' . $chatId . ' ' . $username . $profiles);
+
+    sendMessage($chatId, $output);
   }
 }
 
 elseif ($command == '/remove') {
   //Remove from mon
 
-  if (empty($messageArr[1])) {
+  if (empty($profilesArr[0])) {
     sendMessage($chatId, '
 Removes a user from your monitor list. You can also specify up to 4 users to remove from your list.
 
@@ -116,7 +107,7 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
   else {
     $count = 0;
     $removed = 'Removed from monitor list:';
-    foreach ($messageArr as $parameter) {
+    foreach ($profilesArr as $parameter) {
       if (strpos($parameter, '/') === false && $count < 4) {
         $count += 1;
         $output = shell_exec('php remove.php ' . $parameter . ' ' . $chatId);

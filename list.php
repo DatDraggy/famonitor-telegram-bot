@@ -2,7 +2,8 @@
 //$chatIdQuery = '%' . $chatId . '1%+=#..?+#';
 // Query: SELECT profile FROM fajournalmon WHERE email like ':chatIdQuery'
 //1+=#..?+#
-require_once('/var/www/famonitor.com/funcs.php');
+require_once(__DIR__ . "../funcs.php");
+
 $conn = new mysqli($config['server'], $config['user'], $config['password'], $config['database']);
 
 $chatId = preg_replace("/[^0-9]/", "", $argv[1]);
