@@ -13,7 +13,7 @@ $current_date = date('Y-m-d H:i:s');
 
 for ($i = 3; $i <= $argv; $i++) {
   $profileName = $argv[$i];
-  if (!empty($profileName)) {
+  if (!empty($argv[$i])) {
     $sql = "SELECT `email` FROM `fajournalmon` WHERE `profile`='" . $profileName . "'";
     $results = mysqli_query($conn, $sql);
     if ($results == false) {
@@ -60,6 +60,9 @@ for ($i = 3; $i <= $argv; $i++) {
     }
 
     $added .= ' ' . $argv[$i];
+  }
+  else{
+    die();
   }
 }
 
