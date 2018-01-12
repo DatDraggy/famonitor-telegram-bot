@@ -128,7 +128,6 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
   }
 }
 
-
 elseif ($command == '/removeall') {
   //Removeall
 
@@ -144,5 +143,3 @@ elseif ($command == '/list') {
   sendMessage($chatId, $output);
   die();
 }
-
-//Test
