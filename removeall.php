@@ -6,7 +6,7 @@ $conn = new mysqli($config['server'], $config['user'], $config['password'], $con
 $chatId = preg_replace("/[^0-9]/", "", $argv[1]);
 $chatIdQuery = $chatId . '1' . $config['escapeString'];
 
-$sql = "UPDATE `fajournalmon` SET `email`=REPLACE(`email`, '{$chatIdQuery}', '{$chatId}0{$config['escapeString']}') WHERE `email` LIKE '%$chatIdQuery%'";
+$sql = "UPDATE `fajournalmon` SET `email`=REPLACE(`email`, '{$chatIdQuery}', '{$chatId}0{$config['escapeString']}') WHERE `email` LIKE '%{$chatIdQuery}%'";
   $result = mysqli_query($conn, $sql);
   if ($result == false) {
     $to = 'admin@kieran.pw';
@@ -16,6 +16,5 @@ $sql = "UPDATE `fajournalmon` SET `email`=REPLACE(`email`, '{$chatIdQuery}', '{$
     mail($to, $subject, $txt, $headers);
     die("sql");
   }
-
 
 echo "Removed all users from your monitor list.";
