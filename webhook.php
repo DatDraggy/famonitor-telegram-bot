@@ -35,7 +35,7 @@ if ($command == '/start') {
   //Start
 
   sendMessage($chatId, '
-Hey there, ' . $firstName . '/' . $username . '.
+Hey there, ' . $username . '.
 
 Use /help to get a list of the available commands.
 
@@ -77,7 +77,6 @@ elseif ($command == '/add') {
   if (empty($messageArr[1])) {
     sendMessage($chatId, '
 Adds a user to your monitor list. You can also specify multiple users seperated by spaces. (Max 4 users)
-
 
 Usage: <code>/add</code> <b>user1</b> <i>user2</i>
 
@@ -129,7 +128,6 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
   }
 }
 
-
 elseif ($command == '/removeall') {
   //Removeall
 
@@ -145,5 +143,3 @@ elseif ($command == '/list') {
   sendMessage($chatId, $output);
   die();
 }
-
-//Test

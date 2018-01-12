@@ -6,8 +6,9 @@ but you're welcome to use this for inspiration. I will not give any support, tho
 
 ### To-Do List
 
-- [x] /list
-- [ ] /add
+- [ ] /add `In-Dev`
 - [ ] /remove
-- [ ] Monitoring
-- [ ] Notifying
+- [x] /removall
+- [x] /list
+- [x] Monitoring
+- [x] Notifying
