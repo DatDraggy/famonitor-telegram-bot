@@ -31,7 +31,7 @@ for ($i = 3; $i <= $argv; $i++) {
     }
 
     if ($profileExists) {
-      $sql = "UPDATE `fajournalmon` SET `name`=CONCAT(name, '" . $name . "|'),`email`= CONCAT(email, '" . $email . '0' . $config['escapeString'] . "'),`time`= CONCAT(time, '" . $current_date . "|'),`ip`= CONCAT(ip, '" . $ip . "|') WHERE `profile`='" . $profileName . "'";
+      $sql = "UPDATE `fajournalmon` SET `name`=CONCAT(name, '" . $name . "|'),`email`= CONCAT(email, '" . $email . '1' . $config['escapeString'] . "'),`time`= CONCAT(time, '" . $current_date . "|'),`ip`= CONCAT(ip, '" . $ip . "|') WHERE `profile`='" . $profileName . "'";
       $results = mysqli_query($conn, $sql);
       if ($results == false) {
         $to = 'admin@kieran.pw';
@@ -47,7 +47,7 @@ for ($i = 3; $i <= $argv; $i++) {
       $rows = mysqli_fetch_row($results)[0];
 
       $newest = checkTitle($rows['a'], $rows['b'], $profileName);
-      $sql = "INSERT INTO `fajournalmon`(`profile`, `name`, `email`, `lastTitle`, `time`, `ip`, `lastId`) VALUES ('{$profileName}', '{$name}|', '{$email}0{$config['escapeString']}', '{$newest[0]}','{$current_date}|','{$ip}|', '{$newest[1]}')";
+      $sql = "INSERT INTO `fajournalmon`(`profile`, `name`, `email`, `lastTitle`, `time`, `ip`, `lastId`) VALUES ('{$profileName}', '{$name}|', '{$email}1{$config['escapeString']}', '{$newest[0]}','{$current_date}|','{$ip}|', '{$newest[1]}')";
       $results = mysqli_query($conn, $sql);
       if ($results == false) {
         $to = 'admin@kieran.pw';
