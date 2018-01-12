@@ -4,10 +4,17 @@ Currently in development.
 This isn't supposed to be used by anyone except me since only I have the database, 
 but you're welcome to use this for inspiration. I will not give any support, though.
 
+### Release
+
+@famonitor_bot on Telegram is now basically finished. 
+Maybe I will add some more things, maybe not. 
+
+I'm happy that I got it working this fast.
+
 ### To-Do List
 
 - [x] /add `In-Testing`
-- [ ] /remove `In-Dev`
+- [X] /remove `In-Testing`
 - [x] /removall
 - [x] /list
 - [x] Monitoring
