@@ -104,8 +104,7 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
       foreach ($profilesArr as $profile) {
         $profiles .= ' ' . $profile;
       }
-      $output = 'php remove.php ' . $chatId . ' ' . $profiles;
-      //$output = shell_exec('php remove.php ' . $chatId . ' ' . $profiles);
+      $output = shell_exec('php remove.php ' . $chatId . ' ' . $profiles);
       sendMessage($chatId, $output);
     }
     break;

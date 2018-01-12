@@ -19,7 +19,8 @@ for ($i = 2; $i <= $argv; $i++) {
       die("Something went wrong! The admin has been notified.");
     }
 
-    $removed .= ' <b>' . $profileName . '</b>';
+    $removed .= ' 
+- ' . $profileName;
   }
   else{
     die("Removed following users from your monitor list:" . $removed);
