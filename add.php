@@ -30,6 +30,7 @@ for ($i = 3; $i <= $argv; $i++) {
       $profileExists = 1;
       if (strpos($rows[0], $email) !== false) {
         if (strpos($rows[0], $email . '0' . $config['escapeString']) !== false) {
+          echo "echo";
           $sql = "UPDATE `fajournalmon` SET `email`=REPLACE(`email`, '{$email}1{$config['escapeString']}', '{$email}0{$config['escapeString']}') WHERE `profile`='{$profileName}'";
           $results = mysqli_query($conn, $sql);
           if ($results == false) {
