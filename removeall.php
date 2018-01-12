@@ -1,15 +1,11 @@
 <?php
-//$chatIdQuery = '%' . $chatId . '1%+=#..?+#';
-// Query: SELECT profile FROM fajournalmon WHERE email like ':chatIdQuery'
-//1+=#..?+#
 require_once('/var/www/famonitor.com/funcs.php');
 $conn = new mysqli($config['server'], $config['user'], $config['password'], $config['database']);
 
 $chatId = preg_replace("/[^0-9]/", "", $argv[1]);
 $chatIdQuery = $chatId . '1' . $config['escapeString'];
-$monlist = 'Monitoring: ';
 
-$sql = "SELECT `profile` FROM `fajournalmon` WHERE `email` LIKE '%{$chatIdQuery}%'";
+$sql = "UPDATE `fajournalmon` SET `email`=REPLACE(`email`, '{$chatIdQuery}', '{$chatId}0{$config['escapeString']}') WHERE `email` LIKE '%$chatIdQuery%'";
 $result = mysqli_query($conn, $sql);
 if ($result == false) {
   $to = 'admin@kieran.pw';
@@ -20,18 +16,4 @@ if ($result == false) {
   die("sql");
 }
 
-while ($row = $result->fetch_array()) {
-  $rows[] = $row;
-}
-
-if(empty($rows)){
-  die('You are not monitoring any accounts.');
-}
-
-foreach ($rows as $row) {
-  $monlist .= ' 
-
-- <a href="https://furaffinity.net/user/' . $row['profile'] . '">' . $row['profile'] . '</a>';
-}
-
-echo $monlist;
+echo "Removed all users from your monitor list.";
