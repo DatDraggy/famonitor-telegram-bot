@@ -125,7 +125,7 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
   default:
     //Default
 
-    sendMessage($chatId, 'Use <code>/help</code> if you need assistance.');
+    sendMessage($chatId, 'Use /help if you need assistance.');
     die();
     break;
 }
