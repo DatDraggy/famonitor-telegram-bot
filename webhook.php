@@ -49,9 +49,9 @@ Here is a small overview of available commands. Alternatively, you can use famon
 You can click add and remove to find out more about their usage.
 
 
-/add - Adds the specified users to your monitor list <b>[In development]</b>
+/add - Adds the specified users to your monitor list
 
-/remove - Removes the specified users from your monitor list <b>[In development]</b>
+/remove - Removes the specified users from your monitor list
 
 /removeall - Removes all users from your monitor list
 
@@ -120,6 +120,12 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
 
     $output = shell_exec('php list.php ' . $chatId);
     sendMessage($chatId, $output);
+    die();
+    break;
+  default:
+    //Default
+
+    sendMessage($chatId, 'Use <code>/help</code> if you need assistance.');
     die();
     break;
 }
