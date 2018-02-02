@@ -80,7 +80,7 @@ for ($i = 3; $i <= $argv; $i++) {
   }
   else {
     die('Added the following users to your monitor list:' . $added . '
-    You might receive a notification about a new journal about 8 minutes after adding a user. This issue will be fixed soon.');
+You might receive a notification about a new journal about 8 minutes after adding a user. This issue will be fixed soon.');
   }
 }
 
