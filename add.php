@@ -79,8 +79,10 @@ for ($i = 3; $i <= $argv; $i++) {
 - ' . $profileName;
   }
   else {
-    die("Added the following users to your monitor list:" . $added);
+    die('Added the following users to your monitor list:' . $added . '
+    You might receive a notification about a new journal about 8 minutes after adding a user. This issue will be fixed soon.');
   }
 }
 
-echo "Added the following users to your monitor list:" . $added;
+echo 'Added the following users to your monitor list:' . $added . '
+You might receive a notification about a new journal about 8 minutes after adding a user. This issue will be fixed soon.';
