@@ -50,6 +50,7 @@ You can click add and remove to find out more about their usage.
 
 
 /add - Adds the specified users to your monitor list
+You might receive a notification about a new journal about 8 minutes after adding a user. This issue will be fixed soon.
 
 /remove - Removes the specified users from your monitor list
 
