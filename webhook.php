@@ -123,6 +123,12 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
     sendMessage($chatId, $output);
     die();
     break;
+  case "/ping":
+  case "ping":
+    //Pong
+    sendMessage($chatId, 'Pong.');
+    die();
+    break;
   default:
     //Default
 
