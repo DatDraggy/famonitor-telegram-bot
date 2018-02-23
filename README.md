@@ -1,5 +1,4 @@
 # famonitor.com Telegram Bot
-Currently in development. 
 
 This isn't supposed to be used by anyone except me since only I have the database, 
 but you're welcome to use this for inspiration. I will not give any support, though.
@@ -13,9 +12,10 @@ I'm happy that I got it working this fast.
 
 ### To-Do List
 
-- [x] /add `In-Testing`
-- [X] /remove `In-Testing`
+- [x] /add
+- [X] /remove
 - [x] /removall
 - [x] /list
 - [x] Monitoring
 - [x] Notifying
+- [ ] /title Either an int for specific journal or username for newest journal

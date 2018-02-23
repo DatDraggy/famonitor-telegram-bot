@@ -23,6 +23,9 @@ if (substr($message, '0', '1') == '/') {
   $command = $profilesArr[0];
   array_splice($profilesArr, 0, '1');
 }
+else{
+  $command = '/unknown';
+}
 
 switch ($command) {
   case "/start":
@@ -121,6 +124,12 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
 
     $output = shell_exec('php list.php ' . $chatId);
     sendMessage($chatId, $output);
+    die();
+    break;
+  case "/ping":
+    //Pong
+    
+    sendMessage($chatId, 'Pong.');
     die();
     break;
   default:
