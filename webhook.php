@@ -23,8 +23,7 @@ if (substr($message, '0', '1') == '/') {
   $command = $profilesArr[0];
   array_splice($profilesArr, 0, '1');
 }
-
-if(substr($command,0,1) != '/'){
+else{
   $command = '/unknown';
 }
 
