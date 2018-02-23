@@ -24,7 +24,7 @@ if (substr($message, '0', '1') == '/') {
   array_splice($profilesArr, 0, '1');
 }
 
-if(substr($command,1) != '/'){
+if(substr($command,0) != '/'){
   $command = '/unknown';
 }
 
@@ -128,7 +128,6 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
     die();
     break;
   case "/ping":
-  case "ping":
     //Pong
     
     sendMessage($chatId, 'Pong.');
