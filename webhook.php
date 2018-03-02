@@ -48,7 +48,7 @@ For support or questions, go poke my daddy @DatDraggy.
     sendMessage($chatId, '
 Here is a small overview of available commands. Alternatively, you can use famonitor.com for email notifications.
 
-You can click add and remove to find out more about their usage.
+You can click add, remove and title to find out more about their usage.
 
 
 /add - Adds the specified users to your monitor list
