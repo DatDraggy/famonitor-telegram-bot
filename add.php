@@ -3,17 +3,14 @@ require_once(__DIR__ . "/../funcs.php");
 
 $conn = new mysqli($config['server'], $config['user'], $config['password'], $config['database']);
 
-$chatId = preg_replace("/[^0-9]/", "", $argv[1]);
-$name = preg_replace("/[^\w]/", '', $argv[2]);
 $chatIdQuery = $chatId . '1' . $config['escapeString'];
 $added = '';
 $email = $chatId;
 $ip = 'telegram';
 $current_date = date('Y-m-d H:i:s');
 
-for ($i = 3; $i <= $argv; $i++) {
-  if (!empty($argv[$i])) {
-    $profileName = strtolower($argv[$i]);
+foreach($profileArr as $profileName) {
+  if (!empty($profileName)) {
     $sql = "SELECT `email` FROM `fajournalmon` WHERE `profile`='" . $profileName . "'";
     $results = mysqli_query($conn, $sql);
     if ($results == false) {
@@ -47,7 +44,7 @@ for ($i = 3; $i <= $argv; $i++) {
       }
     }
     if ($profileExists) {
-      $sql = "UPDATE `fajournalmon` SET `name`=CONCAT(name, '" . $name . "|'),`email`= CONCAT(email, '" . $email . '1' . $config['escapeString'] . "'),`time`= CONCAT(time, '" . $current_date . "|'),`ip`= CONCAT(ip, '" . $ip . "|') WHERE `profile`='" . $profileName . "'";
+      $sql = "UPDATE `fajournalmon` SET `name`=CONCAT(name, '" . $username . "|'),`email`= CONCAT(email, '" . $email . '1' . $config['escapeString'] . "'),`time`= CONCAT(time, '" . $current_date . "|'),`ip`= CONCAT(ip, '" . $ip . "|') WHERE `profile`='" . $profileName . "'";
       $results = mysqli_query($conn, $sql);
       if ($results == false) {
         $to = 'admin@kieran.pw';
@@ -64,7 +61,7 @@ for ($i = 3; $i <= $argv; $i++) {
       $rows = mysqli_fetch_row($results);
 
       $newest = checkTitle($rows[1], $rows[2], $profileName);
-      $sql = "INSERT INTO `fajournalmon`(`profile`, `name`, `email`, `lastTitle`, `time`, `ip`, `lastId`) VALUES ('{$profileName}', '{$name}|', '{$email}1{$config['escapeString']}', '{$newest[0]}','{$current_date}|','{$ip}|', '{$newest[1]}')";
+      $sql = "INSERT INTO `fajournalmon`(`profile`, `name`, `email`, `lastTitle`, `time`, `ip`, `lastId`) VALUES ('{$profileName}', '{$username}|', '{$email}1{$config['escapeString']}', '{$newest[0]}','{$current_date}|','{$ip}|', '{$newest[1]}')";
       $results = mysqli_query($conn, $sql);
       if ($results == false) {
         $to = 'admin@kieran.pw';
@@ -80,8 +77,9 @@ for ($i = 3; $i <= $argv; $i++) {
 - ' . $profileName;
   }
   else {
-    die('Added the following users to your monitor list:' . $added . '');
+    $output = 'Added the following users to your monitor list:' . $added . '';
+    die();
   }
 }
 
-echo 'Added the following users to your monitor list:' . $added . '';
+$output = 'Added the following users to your monitor list:' . $added . '';
