@@ -62,7 +62,7 @@ for ($i = 3; $i <= $argv; $i++) {
       $sql = "SELECT MAX(id),`a`,`b` FROM `fajournalmon_cookies` WHERE `a` <> ''";
       $results = mysqli_query($conn, $sql);
       $rows = mysqli_fetch_row($results);
-      
+
       $newest = checkTitle($rows[1], $rows[2], $profileName);
       $sql = "INSERT INTO `fajournalmon`(`profile`, `name`, `email`, `lastTitle`, `time`, `ip`, `lastId`) VALUES ('{$profileName}', '{$name}|', '{$email}1{$config['escapeString']}', '{$newest[0]}','{$current_date}|','{$ip}|', '{$newest[1]}')";
       $results = mysqli_query($conn, $sql);
@@ -80,10 +80,8 @@ for ($i = 3; $i <= $argv; $i++) {
 - ' . $profileName;
   }
   else {
-    die('Added the following users to your monitor list:' . $added . '
-You might receive a notification about a new journal about 8 minutes after adding a user. This issue will be fixed soon.');
+    die('Added the following users to your monitor list:' . $added . '');
   }
 }
 
-echo 'Added the following users to your monitor list:' . $added . '
-You might receive a notification about a new journal about 8 minutes after adding a user. This issue will be fixed soon.';
+echo 'Added the following users to your monitor list:' . $added . '';
