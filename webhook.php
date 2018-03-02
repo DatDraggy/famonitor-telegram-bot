@@ -103,7 +103,7 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
     else {
       $conn = new mysqli($config['server'], $config['user'], $config['password'], $config['database']);
       require_once('remove.php');
-      $output = famon_remove($config['email'], $conn, $chatId, $profilesArr);
+      $output = famon_remove($config['email'], $conn, $chatId, $profilesArr, $config['escapeString']);
       sendMessage($chatId, $output);
     }
     break;

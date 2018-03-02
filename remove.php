@@ -1,11 +1,11 @@
 <?php
-function famon_remove($errorMail, $conn, $chatId, $profilesArr) {
+function famon_remove($errorMail, $conn, $chatId, $profilesArr, $escapeString) {
   $email = $chatId;
   $removed = '';
 
   foreach ($profilesArr as $profileName) {
     if (!empty($profileName)) {
-      $sql = "UPDATE `fajournalmon` SET `email`=REPLACE(`email`, '{$email}1{$config['escapeString']}', '{$email}0{$config['escapeString']}') WHERE `profile`='{$profileName}'";
+      $sql = "UPDATE `fajournalmon` SET `email`=REPLACE(`email`, '{$email}1{$escapeString}', '{$email}0{$escapeString}') WHERE `profile`='{$profileName}'";
       $results = mysqli_query($conn, $sql);
       if ($results == false) {
         $to = $errorMail;
