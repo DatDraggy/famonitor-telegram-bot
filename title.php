@@ -20,7 +20,8 @@ for ($i = 2; $i <= $argv; $i++) {
       die("sql");
     }
     $rows = mysqli_fetch_row($results);
-    if (count($rows) == 1) {
+
+    if (count($rows) == 2) {
       $titles .= ' 
 - ' . $profileName . ': <a href="https://furaffinity.net/journal/' . $rows[1] . '/">' . $rows[0] . '</a>';
     }

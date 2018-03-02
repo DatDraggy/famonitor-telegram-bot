@@ -139,16 +139,28 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
     break;
   case "/title":
     //Return title
-    $profiles = '';
-    foreach ($profilesArr as $profile) {
-      $profiles .= ' ' . $profile;
-      if(substr_count($profiles, ' ') == 5){
-        break;
-      }
+    if (empty($profilesArr[0])) {
+      sendMessage($chatId, '
+Returns the newest titles of profiles that are already being monitored.
+
+Usage: <code>/title</code> <b>user1</b> <i>user2</i>
+
+/title Kieran
+');
+      die();
     }
-    $output = shell_exec('php title.php ' . $chatId . ' ' . $profiles);
-    sendMessage($chatId, $output);
-    die();
+
+    else {
+      $profiles = '';
+      foreach ($profilesArr as $profile) {
+        $profiles .= ' ' . $profile;
+        if (substr_count($profiles, ' ') == 5) {
+          break;
+        }
+      }
+      $output = shell_exec('php title.php ' . $chatId . ' ' . $profiles);
+      sendMessage($chatId, $output);
+    }
     break;
   default:
     //Default
