@@ -52,13 +52,14 @@ You can click add and remove to find out more about their usage.
 
 
 /add - Adds the specified users to your monitor list
-You might receive a notification about a new journal about 8 minutes after adding a user. This issue will be fixed soon.
 
 /remove - Removes the specified users from your monitor list
 
 /removeall - Removes all users from your monitor list
 
 /list - Shows all users you\'re currently monitoring
+
+/title - Returns the newest journal title of the specified user 
 
 <code>Text</code> - Indicates a command name
 <b>Text</b> - Required parameter
