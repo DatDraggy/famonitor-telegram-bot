@@ -19,4 +19,4 @@ I'm happy that I got it working this fast.
 - [x] Monitoring
 - [x] Notifying
 - [ ] /title Either an int for specific journal or username for newest journal
-- [ ] Use require_once instead of shell_exec
+- [ ] Use require_once like a decent human being instead of shell_exec
