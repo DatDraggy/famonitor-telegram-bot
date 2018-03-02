@@ -83,6 +83,9 @@ Usage: <code>/add</code> <b>user1</b> <i>user2</i>
       $profiles = '';
       foreach ($profilesArr as $profile) {
         $profiles .= ' ' . $profile;
+        if(substr_count($profiles, ' ') == 5){
+          break;
+        }
       }
       $output = shell_exec('php add.php ' . $chatId . ' ' . $username . $profiles);
       sendMessage($chatId, $output);
@@ -106,6 +109,9 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
       $profiles = '';
       foreach ($profilesArr as $profile) {
         $profiles .= ' ' . $profile;
+        if(substr_count($profiles, ' ') == 5){
+          break;
+        }
       }
       $output = shell_exec('php remove.php ' . $chatId . ' ' . $profiles);
       sendMessage($chatId, $output);
@@ -133,8 +139,15 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
     break;
   case "/title":
     //Return title
-
-    $output = shell_exec('echo swag');
+    $profiles = '';
+    foreach ($profilesArr as $profile) {
+      $profiles .= ' ' . $profile;
+      if(substr_count($profiles, ' ') == 5){
+        break;
+      }
+    }
+    $output = shell_exec('php title.php ' . $chatId . ' ' . $profiles);
+    sendMessage($chatId, $output);
     die();
     break;
   default:
