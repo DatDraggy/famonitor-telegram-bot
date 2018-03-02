@@ -5,10 +5,9 @@ $response = file_get_contents('php://input');
 $data = json_decode($response, true);
 $dump = print_r($data, true);
 
-$chatId = $data['message']['chat']['id'];
-$username = $data['message']['chat']['username'];
-$firstName = $data['message']['chat']['first_name'];
-$message = $data['message']['text'];
+$chatId = sanitizeInputs($data['message']['chat']['id']);
+$username = sanitizeInputs($data['message']['chat']['username']);
+$message = sanitizeInputs($data['message']['text'], true);
 
 if (substr($message, '0', '1') == '/') {
   $profilesArr = array();
@@ -130,6 +129,12 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
     //Pong
     
     sendMessage($chatId, 'Pong.');
+    die();
+    break;
+  case "/title":
+    //Return title
+
+    $output = shell_exec('echo swag');
     die();
     break;
   default:
