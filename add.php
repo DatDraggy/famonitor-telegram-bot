@@ -59,11 +59,11 @@ for ($i = 3; $i <= $argv; $i++) {
       }
     }
     else {
-      $sql = "SELECT MAX(id),`b`,`a` FROM `fajournalmon_cookies` WHERE `a` <> ''";
-      $rows = mysqli_fetch_row($results)[0];
-      mail("spamme@kieran.pw", 'Test', $rows['a'] . ' ' . $rows['b']);
-      //ez debug lel
-      $newest = checkTitle($rows['a'], $rows['b'], $profileName);
+      $sql = "SELECT MAX(id),`a`,`b` FROM `fajournalmon_cookies` WHERE `a` <> ''";
+      $results = mysqli_query($conn, $sql);
+      $rows = mysqli_fetch_row($results);
+      
+      $newest = checkTitle($rows[1], $rows[2], $profileName);
       $sql = "INSERT INTO `fajournalmon`(`profile`, `name`, `email`, `lastTitle`, `time`, `ip`, `lastId`) VALUES ('{$profileName}', '{$name}|', '{$email}1{$config['escapeString']}', '{$newest[0]}','{$current_date}|','{$ip}|', '{$newest[1]}')";
       $results = mysqli_query($conn, $sql);
       if ($results == false) {
