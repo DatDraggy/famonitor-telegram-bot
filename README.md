@@ -18,5 +18,5 @@ I'm happy that I got it working this fast.
 - [x] /list
 - [x] Monitoring
 - [x] Notifying
-- [ ] /title Either an int for specific journal or username for newest journal
-- [ ] Use require_once like a decent human being instead of shell_exec
+- [x] /title
+- [x] Use require_once like a decent human being instead of shell_exec, #title, #add, #remove, #list, #removeall

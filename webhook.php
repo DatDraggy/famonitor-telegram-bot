@@ -81,7 +81,9 @@ Usage: <code>/add</code> <b>user1</b> <i>user2</i>
       die();
     }
     else {
+      $conn = new mysqli($config['server'], $config['user'], $config['password'], $config['database']);
       require_once('add.php');
+      $output = famon_add($config['email'], $conn, $username, $chatId, $profilesArr, $config['escapeString']);
       sendMessage($chatId, $output);
     }
     break;
@@ -98,25 +100,26 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
 ');
       die();
     }
-
     else {
+      $conn = new mysqli($config['server'], $config['user'], $config['password'], $config['database']);
       require_once('remove.php');
+      $output = famon_remove($config['email'], $conn, $chatId, $profilesArr);
       sendMessage($chatId, $output);
     }
     break;
   case "/removeall":
     //Removeall
+    $conn = new mysqli($config['server'], $config['user'], $config['password'], $config['database']);
     require_once('removeall.php');
-    //Old
-    $output = shell_exec('php removeall.php ' . $chatId);
+    $output = famon_removeall($config['email'], $conn, $chatId, $config['escapeString']);
     sendMessage($chatId, $output);
     die();
     break;
   case "/list":
     //List
+    $conn = new mysqli($config['server'], $config['user'], $config['password'], $config['database']);
     require_once('list.php');
-    //Old
-    $output = shell_exec('php list.php ' . $chatId);
+    $output = famon_list($config['email'], $conn, $chatId, $config['escapeString']);
     sendMessage($chatId, $output);
     die();
     break;
@@ -138,18 +141,10 @@ Usage: <code>/title</code> <b>user1</b> <i>user2</i>
 ');
       die();
     }
-
     else {
+      $conn = new mysqli($config['server'], $config['user'], $config['password'], $config['database']);
       require_once('title.php');
-      //Old
-      $profiles = '';
-      foreach ($profilesArr as $profile) {
-        $profiles .= ' ' . $profile;
-        if (substr_count($profiles, ' ') == 5) {
-          break;
-        }
-      }
-      $output = shell_exec('php title.php ' . $chatId . ' ' . $profiles);
+      $output = famon_title($config['email'], $conn, $profilesArr);
       sendMessage($chatId, $output);
     }
     break;
