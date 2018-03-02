@@ -1,5 +1,4 @@
 <?php
-require_once(__DIR__ . "/../funcs.php");
 
 $conn = new mysqli($config['server'], $config['user'], $config['password'], $config['database']);
 
@@ -9,7 +8,7 @@ $email = $chatId;
 $ip = 'telegram';
 $current_date = date('Y-m-d H:i:s');
 
-foreach($profileArr as $profileName) {
+foreach($profilesArr as $profileName) {
   if (!empty($profileName)) {
     $sql = "SELECT `email` FROM `fajournalmon` WHERE `profile`='" . $profileName . "'";
     $results = mysqli_query($conn, $sql);
@@ -75,10 +74,6 @@ foreach($profileArr as $profileName) {
 
     $added .= ' 
 - ' . $profileName;
-  }
-  else {
-    $output = 'Added the following users to your monitor list:' . $added . '';
-    die();
   }
 }
 

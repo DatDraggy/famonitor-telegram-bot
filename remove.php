@@ -1,13 +1,12 @@
 <?php
-require_once (__DIR__ . '/../funcs.php');
+
 $conn = new mysqli($config['server'], $config['user'], $config['password'], $config['database']);
-$chatId = preg_replace("/[^0-9]/", "", $argv[1]);
+
 $email = $chatId;
 $removed = '';
 
-for ($i = 2; $i <= $argv; $i++) {
-  if (!empty($argv[$i])) {
-    $profileName = strtolower($argv[$i]);
+foreach($profilesArr as $profileName){
+  if (!empty($profileName)) {
     $sql = "UPDATE `fajournalmon` SET `email`=REPLACE(`email`, '{$email}1{$config['escapeString']}', '{$email}0{$config['escapeString']}') WHERE `profile`='{$profileName}'";
     $results = mysqli_query($conn, $sql);
     if ($results == false) {
@@ -22,7 +21,6 @@ for ($i = 2; $i <= $argv; $i++) {
     $removed .= ' 
 - ' . $profileName;
   }
-  else{
-    die("Removed following users from your monitor list:" . $removed);
-  }
 }
+
+$output = "Removed following users from your monitor list:" . $removed;

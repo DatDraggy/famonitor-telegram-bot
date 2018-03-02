@@ -81,14 +81,7 @@ Usage: <code>/add</code> <b>user1</b> <i>user2</i>
       die();
     }
     else {
-      $profiles = '';
-      foreach ($profilesArr as $profile) {
-        $profiles .= ' ' . $profile;
-        if(substr_count($profiles, ' ') == 5){
-          break;
-        }
-      }
-      $output = shell_exec('php add.php ' . $chatId . ' ' . $username . $profiles);
+      require_once('add.php');
       sendMessage($chatId, $output);
     }
     break;
@@ -107,27 +100,22 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
     }
 
     else {
-      $profiles = '';
-      foreach ($profilesArr as $profile) {
-        $profiles .= ' ' . $profile;
-        if(substr_count($profiles, ' ') == 5){
-          break;
-        }
-      }
-      $output = shell_exec('php remove.php ' . $chatId . ' ' . $profiles);
+      require_once('remove.php');
       sendMessage($chatId, $output);
     }
     break;
   case "/removeall":
     //Removeall
-
+    require_once('removeall.php');
+    //Old
     $output = shell_exec('php removeall.php ' . $chatId);
     sendMessage($chatId, $output);
     die();
     break;
   case "/list":
     //List
-
+    require_once('list.php');
+    //Old
     $output = shell_exec('php list.php ' . $chatId);
     sendMessage($chatId, $output);
     die();
@@ -152,6 +140,8 @@ Usage: <code>/title</code> <b>user1</b> <i>user2</i>
     }
 
     else {
+      require_once('title.php');
+      //Old
       $profiles = '';
       foreach ($profilesArr as $profile) {
         $profiles .= ' ' . $profile;
