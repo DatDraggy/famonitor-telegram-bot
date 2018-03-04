@@ -153,6 +153,7 @@ Usage: <code>/title</code> <b>user1</b> <i>user2</i>
     case "/addpage":
     //Add Page
     
+    //In Check if # first char of profile do text compare of profile text in lastTitle
     if(empty($profilesArr[0])){
         sendMessage($chatId,'
 <b>Experimental</b>
@@ -164,6 +165,9 @@ Screenshot: https://puu.sh/zA09S/cc4118bb4f.png
 
 /addpage Kieran "Example Text:" open
 ');
+    }
+    else{
+        
     }
     break;
   default:
