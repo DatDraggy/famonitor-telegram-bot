@@ -20,3 +20,4 @@ I'm happy that I got it working this fast.
 - [x] Notifying
 - [x] /title
 - [x] Use require_once like a decent human being instead of shell_exec, #title, #add, #remove, #list, #removeall
+- [ ] By-text comm state monitor

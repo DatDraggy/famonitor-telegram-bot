@@ -61,6 +61,8 @@ You can click add, remove and title to find out more about their usage.
 
 /title - Returns the newest journal title of the specified user 
 
+/addpage - Experimental commission state check on profile page
+
 <code>Text</code> - Indicates a command name
 <b>Text</b> - Required parameter
 <i>Text</i> - Optional parameter
@@ -146,6 +148,22 @@ Usage: <code>/title</code> <b>user1</b> <i>user2</i>
       require_once('title.php');
       $output = famon_title($config['email'], $conn, $profilesArr);
       sendMessage($chatId, $output);
+    }
+    break;
+    case "/addpage":
+    //Add Page
+    
+    if(empty($profilesArr[0])){
+        sendMessage($chatId,'
+<b>Experimental</b>
+Adds a user to your list and uses the specified text to find the profile\'s commission status on their user page.
+Put the text before the commission state in double quotation marks and then the state you want to receive notifications for after.
+
+Usage: <code>/addpage</code> <b>user</b> <b>"state text"</b> <b>state</b>
+Screenshot: https://puu.sh/zA09S/cc4118bb4f.png
+
+/addpage Kieran "Example Text:" open
+');
     }
     break;
   default:
