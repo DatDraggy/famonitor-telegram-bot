@@ -56,23 +56,7 @@ function famon_add($errorMail, $conn, $username, $chatId, $profilesArr, $escapeS
         $results = mysqli_query($conn, $sql);
         $rows = mysqli_fetch_row($results);
 
-        //list($newestTitle, $newestId) = checkTitle($rows[1], $rows[2], $profileName);
-
-        $url = "https://www.furaffinity.net/journals/" . $profileName . "/";
-        $opts = array('http' => array('method' => "GET", 'header' => "Accept-language: en\r\n" . "Cookie: a=" . $rows[1] . "; b=" . $rows[2] . "\r\n"));
-
-        $context = stream_context_create($opts);
-        $html = new simple_html_dom();
-        $html->load_file($url, false, $context);
-        $journals = $html->find('.maintable a');
-        unset($html);
-        if(!isset($journals[1])){
-          return array('none', 'none');
-        }
-        $newestTitle = preg_replace("/[^\w ]/", '', strip_tags($journals[1]));
-        $newestId = str_replace("journal", "", str_replace("/", "", $journals[1]->href));
-
-
+        list($newestTitle, $newestId) = checkTitle($rows[1], $rows[2], $profileName);
         $sql = "INSERT INTO `fajournalmon`(`profile`, `name`, `email`, `lastTitle`, `time`, `ip`, `lastId`) VALUES ('{$profileName}', '{$username}|', '{$chatIdQuery}', '{$newestTitle}','{$current_date}|','{$ip}|', '{$newestId}')";
         $results = mysqli_query($conn, $sql);
         if ($results == false) {
