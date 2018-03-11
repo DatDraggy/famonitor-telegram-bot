@@ -56,8 +56,8 @@ function famon_add($errorMail, $conn, $username, $chatId, $profilesArr, $escapeS
         $results = mysqli_query($conn, $sql);
         $rows = mysqli_fetch_row($results);
 
-        $newest = checkTitle($rows[1], $rows[2], $profileName);
-        $sql = "INSERT INTO `fajournalmon`(`profile`, `name`, `email`, `lastTitle`, `time`, `ip`, `lastId`, `type`) VALUES ('{$profileName}', '{$username}|', '{$chatIdQuery}', '{$newest[0]}','{$current_date}|','{$ip}|', '{$newest[1]}', '1')";
+        list($newestTitle, $newestId) = checkTitle($rows[1], $rows[2], $profileName);
+        $sql = "INSERT INTO `fajournalmon`(`profile`, `name`, `email`, `lastTitle`, `time`, `ip`, `lastId`) VALUES ('{$profileName}', '{$username}|', '{$chatIdQuery}', '{$newestTitle}','{$current_date}|','{$ip}|', '{$newestId}')";
         $results = mysqli_query($conn, $sql);
         if ($results == false) {
           $to = $errorMail;
