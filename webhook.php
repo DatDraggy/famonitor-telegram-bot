@@ -63,6 +63,10 @@ You can click add, remove and title to find out more about their usage.
 
 /addpage - Experimental commission state check on profile page
 
+/id - Returns the current chat id
+
+/ping - ...?
+
 <code>Text</code> - Indicates a command name
 <b>Text</b> - Required parameter
 <i>Text</i> - Optional parameter
