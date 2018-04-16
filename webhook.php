@@ -22,12 +22,12 @@ if (substr($message, '0', '1') == '/') {
   $command = $profilesArr[0];
   array_splice($profilesArr, 0, '1');
 }
-else{
+else {
   $command = '/unknown';
 }
 
 switch ($command) {
-  case "/start":
+  case '/start':
     //Start
 
     sendMessage($chatId, '
@@ -42,7 +42,7 @@ For support or questions, go poke @DatDraggy.
 ');
     die();
     break;
-  case "/help":
+  case '/help':
     //Help
 
     sendMessage($chatId, '
@@ -69,7 +69,7 @@ You can click add, remove and title to find out more about their usage.
 ');
     die();
     break;
-  case "/add":
+  case '/add':
     //Add to mon
 
     if (empty($profilesArr[0])) {
@@ -89,7 +89,7 @@ Usage: <code>/add</code> <b>user1</b> <i>user2</i>
       sendMessage($chatId, $output);
     }
     break;
-  case "/remove":
+  case '/remove':
     //Remove from mon
 
     if (empty($profilesArr[0])) {
@@ -109,30 +109,33 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
       sendMessage($chatId, $output);
     }
     break;
-  case "/removeall":
+  case '/removeall':
     //Removeall
+
     $conn = new mysqli($config['server'], $config['user'], $config['password'], $config['database']);
     require_once('removeall.php');
     $output = famon_removeall($config['email'], $conn, $chatId, $config['escapeString']);
     sendMessage($chatId, $output);
     die();
     break;
-  case "/list":
+  case '/list':
     //List
+
     $conn = new mysqli($config['server'], $config['user'], $config['password'], $config['database']);
     require_once('list.php');
     $output = famon_list($config['email'], $conn, $chatId, $config['escapeString']);
     sendMessage($chatId, $output);
     die();
     break;
-  case "/ping":
+  case '/ping':
     //Pong
-    
+
     sendMessage($chatId, 'Pong.');
     die();
     break;
-  case "/title":
+  case '/title':
     //Return title
+
     if (empty($profilesArr[0])) {
       sendMessage($chatId, '
 Returns the newest titles of profiles that are already being monitored.
@@ -150,12 +153,12 @@ Usage: <code>/title</code> <b>user1</b> <i>user2</i>
       sendMessage($chatId, $output);
     }
     break;
-    case '/addpage':
+  case '/addpage':
     //Add Page
-    
+
     //In Check if # first char of profile do text compare of profile text in lastTitle
-    if(empty($profilesArr[0])){
-        sendMessage($chatId,'
+    if (empty($profilesArr[0])) {
+      sendMessage($chatId, '
 <b>Experimental</b>
 Adds a user to your list and uses the specified text to find the profile\'s commission status on their user page.
 Put the text before the commission state in double quotation marks and then the state you want to receive notifications for after.
@@ -166,8 +169,8 @@ Screenshot: https://puu.sh/zA09S/cc4118bb4f.png
 /addpage Kieran "Example Text:" open
 ');
     }
-    else{
-        
+    else {
+
     }
     break;
   case '/id':
