@@ -6,7 +6,8 @@ function famon_add($errorMail, $conn, $username, $chatId, $profilesArr, $escapeS
   $ip = 'telegram';
   $current_date = date('Y-m-d H:i:s');
 
-  foreach ($profilesArr as $profileName) {
+  foreach ($profilesArr as $profileN) {
+    $profileName = strtolower($profileN);
     if (!empty($profileName)) {
       $sql = "SELECT `email` FROM `fajournalmon` WHERE `profile`='" . $profileName . "'";
       $results = mysqli_query($conn, $sql);
