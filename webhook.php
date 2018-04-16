@@ -150,7 +150,7 @@ Usage: <code>/title</code> <b>user1</b> <i>user2</i>
       sendMessage($chatId, $output);
     }
     break;
-    case "/addpage":
+    case '/addpage':
     //Add Page
     
     //In Check if # first char of profile do text compare of profile text in lastTitle
