@@ -19,8 +19,7 @@ function famon_title($errorMail, $conn, $profilesArr) {
       if (count($rows) == 2) {
         $titles .= ' 
 - ' . $profileName . ': <a href="https://furaffinity.net/journal/' . $rows[1] . '/">' . $rows[0] . '</a>';
-      }
-      else {
+      } else {
         $titles .= '
 - No journal for ' . $profileName . ' found. Use /add first.';
       }
