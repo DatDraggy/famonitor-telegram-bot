@@ -21,7 +21,8 @@ if (substr($message, '0', '1') == '/') {
 
   $command = $profilesArr[0];
   array_splice($profilesArr, 0, '1');
-  array_map('strtolower', $profilesArr);
+  //array_map('strtolower', $profilesArr);
+  //Actually not needed
 }
 else{
   $command = '/unknown';
