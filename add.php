@@ -51,7 +51,8 @@ function famon_add($errorMail, $conn, $username, $chatId, $profilesArr, $escapeS
           mail($to, $subject, $txt, $headers);
           die("sql");
         }
-      } else {
+      }
+      else {
         $sql = "SELECT MAX(id),`a`,`b` FROM `fajournalmon_cookies` WHERE `a` <> ''";
         $results = mysqli_query($conn, $sql);
         $rows = mysqli_fetch_row($results);
