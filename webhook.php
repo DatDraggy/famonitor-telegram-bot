@@ -170,6 +170,11 @@ Screenshot: https://puu.sh/zA09S/cc4118bb4f.png
         
     }
     break;
+  case '/id':
+    //Echo chatId
+
+    sendMessage($chatId, $chatId);
+    break;
   default:
     //Default
 
