@@ -3,7 +3,7 @@ require_once(__DIR__ . "/../funcs.php");
 
 $response = file_get_contents('php://input');
 $data = json_decode($response, true);
-$dump = print_r($data, true);
+//$dump = print_r($data, true);
 
 $chatId = sanitizeInputs($data['message']['chat']['id']);
 $username = sanitizeInputs($data['message']['chat']['username']);
@@ -21,6 +21,7 @@ if (substr($message, '0', '1') == '/') {
 
   $command = $profilesArr[0];
   array_splice($profilesArr, 0, '1');
+  array_map('strtolower', $profilesArr);
 }
 else{
   $command = '/unknown';
