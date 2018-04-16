@@ -38,7 +38,7 @@ Use /help to get a list of the available commands.
 This bot automatically monitors furaffinity.net profiles for new journals. 
 Once a new journal has been posted, you will receive a message from the bot.
 
-For support or questions, go poke my daddy @DatDraggy.
+For support or questions, go poke @DatDraggy.
 ');
     die();
     break;
