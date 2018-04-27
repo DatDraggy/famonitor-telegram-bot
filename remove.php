@@ -15,7 +15,6 @@ function famon_remove($errorMail, $conn, $chatId, $profilesArr, $escapeString) {
         mail($to, $subject, $txt, $headers);
         die("Something went wrong! The admin has been notified.");
       }
-
       $removed .= ' 
 - ' . $profileName;
     }
