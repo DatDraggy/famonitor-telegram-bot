@@ -10,7 +10,10 @@ if(isset($data['message']['chat']['username'])) {
   $username = sanitizeInputs($data['message']['chat']['username']);
 }
 else{
-  $username = sanitizeInputs($data['message']['chat']['first_name'], true) . ' '. sanitizeInputs($data['message']['chat']['last_name'], true);
+  $username = sanitizeInputs($data['message']['chat']['first_name'], true);
+  if(isset($data['message']['chat']['last_name'])){
+    $username = $username . ' ' . sanitizeInputs($data['message']['chat']['last_name'], true);
+  }
 }
 $message = sanitizeInputs($data['message']['text'], true);
 
