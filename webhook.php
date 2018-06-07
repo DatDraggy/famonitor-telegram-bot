@@ -6,13 +6,6 @@ $data = json_decode($response, true);
 $dump = print_r($data, true);
 $chatId = sanitizeInputs($data['message']['chat']['id']);
 
-if(isset($data['message']['sticker'])){
-  $sticker = $data['message']['sticker']['file_id'];
-  $stickerUrl = getFile($sticker);
-  sendSticker($chatId, $stickerUrl);
-  die();
-}
-
 if(isset($data['message']['chat']['username'])) {
   $username = sanitizeInputs($data['message']['chat']['username']);
 }
