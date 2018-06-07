@@ -9,7 +9,9 @@ $chatId = sanitizeInputs($data['message']['chat']['id']);
 if(isset($data['message']['sticker'])){
   $sticker = $data['message']['sticker']['file_id'];
   sendSticker($chatId, $sticker);
+  die();
 }
+
 if(isset($data['message']['chat']['username'])) {
   $username = sanitizeInputs($data['message']['chat']['username']);
 }
