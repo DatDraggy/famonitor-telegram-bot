@@ -9,7 +9,7 @@ $chatId = sanitizeInputs($data['message']['chat']['id']);
 if(isset($data['message']['sticker'])){
   $sticker = $data['message']['sticker']['file_id'];
   $stickerUrl = getFile($sticker);
-  sendSticker($chatId, $stickerUrl);
+  sendSticker($chatId, $sticker);
   die();
 }
 
