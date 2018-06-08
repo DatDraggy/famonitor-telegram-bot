@@ -69,6 +69,8 @@ You can click add, remove and title to find out more about their usage.
 
 /title - Returns the newest journal title of the specified user 
 
+/addpage - Experimental commission state check on profile page
+
 /id - Returns the current chat id
 
 /ping - ...?
