@@ -58,8 +58,8 @@ function famon_add($errorMail, $conn, $username, $chatId, $profilesArr, $escapeS
         $rows = mysqli_fetch_row($results);
 
         //list($newestTitle, $newestId) = checkTitle($rows[1], $rows[2], $profileName);
-        $newestId = 1;
-        $newestTitle = 'x';
+        $newestId = -1;
+        $newestTitle = 'Refreshing...';
         $sql = "INSERT INTO `fajournalmon`(`profile`, `name`, `email`, `lastTitle`, `time`, `ip`, `lastId`) VALUES ('{$profileName}', '{$username}|', '{$chatIdQuery}', '{$newestTitle}','{$current_date}|','{$ip}|', '{$newestId}')";
         $results = mysqli_query($conn, $sql);
         if ($results == false) {
