@@ -14,7 +14,7 @@ function famon_add($errorMail, $conn, $username, $chatId, $profilesArr, $escapeS
         $to = $errorMail;
         $subject = 'Error journal check';
         $txt = __FILE__ . ' Error: ' . $sql . '<br>' . mysqli_error($conn);
-        $headers = 'From: fajournal@kieran.pw';
+        $headers = 'From: fajournal@kieran.de';
         mail($to, $subject, $txt, $headers);
         die("sql");
       }
@@ -30,7 +30,7 @@ function famon_add($errorMail, $conn, $username, $chatId, $profilesArr, $escapeS
               $to = $errorMail;
               $subject = 'Error journal check';
               $txt = __FILE__ . ' Error: ' . $sql . '<br>' . mysqli_error($conn);
-              $headers = 'From: fajournal@kieran.pw';
+              $headers = 'From: fajournal@kieran.de';
               mail($to, $subject, $txt, $headers);
               die("sql");
             }
@@ -47,7 +47,7 @@ function famon_add($errorMail, $conn, $username, $chatId, $profilesArr, $escapeS
           $to = $errorMail;
           $subject = 'Error journal check';
           $txt = __FILE__ . ' Error: ' . $sql . '<br>' . mysqli_error($conn);
-          $headers = 'From: fajournal@kieran.pw';
+          $headers = 'From: fajournal@kieran.de';
           mail($to, $subject, $txt, $headers);
           die("sql");
         }
@@ -66,7 +66,7 @@ function famon_add($errorMail, $conn, $username, $chatId, $profilesArr, $escapeS
           $to = $errorMail;
           $subject = 'Error journal check';
           $txt = __FILE__ . ' Error: ' . $sql . '<br>' . mysqli_error($conn);
-          $headers = 'From: fajournal@kieran.pw';
+          $headers = 'From: fajournal@kieran.de';
           mail($to, $subject, $txt, $headers);
           die("sql");
         }

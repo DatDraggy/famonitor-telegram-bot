@@ -9,7 +9,7 @@ function famon_list($errorMail, $conn, $chatId, $escapeString) {
     $to = $errorMail;
     $subject = 'Error Telegram List';
     $txt = __FILE__ . ' Error: ' . $sql . '<br>' . mysqli_error($conn);
-    $headers = 'From: fajournal@kieran.pw';
+    $headers = 'From: fajournal@kieran.de';
     mail($to, $subject, $txt, $headers);
     die("sql");
   }
