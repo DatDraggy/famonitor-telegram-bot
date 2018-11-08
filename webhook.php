@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . "/../funcs.php");
+require_once(__DIR__ . "/methods.php");
 
 $response = file_get_contents('php://input');
 $data = json_decode($response, true);
@@ -96,7 +97,6 @@ Usage: <code>/add</code> <b>user1</b> <i>user2</i>
     }
     else {
       $conn = new mysqli($config['server'], $config['user'], $config['password'], $config['database']);
-      require_once('add.php');
       $output = famon_add($config['email'], $conn, $username, $chatId, $profilesArr, $config['escapeString']);
       sendMessage($chatId, $output);
     }
@@ -116,7 +116,6 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
     }
     else {
       $conn = new mysqli($config['server'], $config['user'], $config['password'], $config['database']);
-      require_once('remove.php');
       $output = famon_remove($config['email'], $conn, $chatId, $profilesArr, $config['escapeString']);
       sendMessage($chatId, $output);
     }
@@ -125,7 +124,6 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
     //Removeall
 
     $conn = new mysqli($config['server'], $config['user'], $config['password'], $config['database']);
-    require_once('removeall.php');
     $output = famon_removeall($config['email'], $conn, $chatId, $config['escapeString']);
     sendMessage($chatId, $output);
     die();
@@ -134,7 +132,6 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
     //List
 
     $conn = new mysqli($config['server'], $config['user'], $config['password'], $config['database']);
-    require_once('list.php');
     $output = famon_list($config['email'], $conn, $chatId, $config['escapeString']);
     sendMessage($chatId, $output);
     die();
@@ -160,7 +157,6 @@ Usage: <code>/title</code> <b>user1</b> <i>user2</i>
     }
     else {
       $conn = new mysqli($config['server'], $config['user'], $config['password'], $config['database']);
-      require_once('title.php');
       $output = famon_title($config['email'], $conn, $profilesArr);
       sendMessage($chatId, $output);
     }
