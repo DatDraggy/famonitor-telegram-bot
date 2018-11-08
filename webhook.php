@@ -47,6 +47,9 @@ Use /help to get a list of the available commands.
 This bot automatically monitors furaffinity.net profiles for new journals. 
 Once a new journal has been posted, you will receive a message from the bot.
 
+Make sure to use the username in the profile url when adding or removing users.
+https://furaffinity.net/user/<b>kieran</b>/
+
 For support or questions, go poke @DatDraggy.
 ');
     die();
@@ -89,7 +92,7 @@ You can click add, remove and title to find out more about their usage.
       sendMessage($chatId, '
 Adds a user to your monitor list. You can also specify multiple users seperated by spaces. (Max 4 users)
 
-Usage: <code>/add</code> <b>user1</b> <i>user2</i>
+Usage: <code>/add</code> <b>username1</b> <i>username2</i>
 
 /add Kieran
 ');
@@ -108,7 +111,7 @@ Usage: <code>/add</code> <b>user1</b> <i>user2</i>
       sendMessage($chatId, '
 Removes a user from your monitor list. You can also specify up to 4 users to remove from your list.
 
-Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
+Usage: <code>/remove</code> <b>username1</b> <i>username2</i>
 
 /remove Kieran
 ');
@@ -149,7 +152,7 @@ Usage: <code>/remove</code> <b>user1</b> <i>user2</i>
       sendMessage($chatId, '
 Returns the newest titles of profiles that are already being monitored.
 
-Usage: <code>/title</code> <b>user1</b> <i>user2</i>
+Usage: <code>/title</code> <b>username1</b> <i>username1</i>
 
 /title Kieran
 ');
@@ -171,7 +174,7 @@ Usage: <code>/title</code> <b>user1</b> <i>user2</i>
 Adds a user to your list and uses the specified text to find the profile\'s commission status on their user page.
 Put the text before the commission state in double quotation marks and then the state you want to receive notifications for after.
 
-Usage: <code>/addpage</code> <b>user</b> <b>"state text"</b> <b>state</b>
+Usage: <code>/addpage</code> <b>username1</b> <b>"state text"</b> <b>state</b>
 Screenshot: https://puu.sh/zA09S/cc4118bb4f.png
 
 /addpage Kieran "Example Text:" open
